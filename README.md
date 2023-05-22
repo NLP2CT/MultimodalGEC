@@ -5,5 +5,5 @@ The implementation of the paper titled `Improving Grammatical Error Correction w
  
 
 <div align="center">
-    <img src="/images/overall-framework" width="80%" title="Overall framework of multimodal GEC model. "</img>
+    <img src="/images/overall-framework.pdf" width="80%" title="Overall framework of multimodal GEC model. "</img>
 </div>
