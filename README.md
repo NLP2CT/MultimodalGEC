@@ -41,7 +41,7 @@ Due to the large size of the English Clang8 data and the significant memory requ
    sh generate_english_speech.sh
    ```
    
-   Please refer to the [`example`](https://github.com/NLP2CT/MultimodalGEC/tree/main/examples) folder where we have showcased some speech data generated using the CoNLL14 test set.
+   Please refer to the [`examples`](https://github.com/NLP2CT/MultimodalGEC/tree/main/examples) folder where we have showcased some speech data generated using the CoNLL14 test set.
 
 ### German GEC Multimodal Data
 
