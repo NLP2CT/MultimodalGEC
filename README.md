@@ -13,7 +13,7 @@ Grammatical error correction (GEC) is a promising task aimed at correcting error
 
 ## Multimodal Data Creation
 
-# English GEC Multimodal Data
+### English GEC Multimodal Data
 
 Due to the large size of the English Clang8 data and the significant memory requirements for speech data, we are sharing the detailed methodology for generating English multimodal speech data.
 
@@ -42,6 +42,6 @@ Due to the large size of the English Clang8 data and the significant memory requ
    
    Please refer to the [`example`](https://github.com/NLP2CT/MultimodalGEC/tree/main/examples) folder where we have showcased some speech data generated using the CoLL14 test set.
 
-# German GEC Multimodal Data
+### German GEC Multimodal Data
 
 Since the amount of German data is not substantial, we have released all the data directly, and you can download it from the provided [link](https://drive.google.com/drive/folders/1Cq2arkGpWQ7IQjbOjFC95F-DKTeD--IL?usp=share_link).
