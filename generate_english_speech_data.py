@@ -28,7 +28,7 @@ errors_sent = open(error_file, "w")
 
 #lines = f_text.readlines()
 
-i = 19590
+i = 0
 
 for line in open(text, "r"):
 
@@ -44,7 +44,7 @@ for line in open(text, "r"):
         wav, rate = TTSHubInterface.get_prediction(task, models[0].to(device), generator, sample)
         wav = wav.cpu()
 
-        save_dir = "/data/home/yc07490/Russian_GEC/speech/clang8-en/clang8_en_speech/cl8-en-01/cl8_01_en-{}.wav".format(i)
+        save_dir = "/your_path/speech/clang8-en/clang8_en_speech/cl8-en-01/cl8_01_en-{}.wav".format(i)
         soundfile.write(save_dir, wav, rate)
         
         text_save_dir = "speech/clang8_en_speech/cl8-en-01/cl8_01_en-{}.wav".format(i)
