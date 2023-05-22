@@ -16,7 +16,7 @@ python generate_english_speech_data.py \
         
         
 
-# CoLL14 test data
+# CoNLL14 test data
 python generate_english_speech_data.py \
         /your_path/data-english/coll14_test.tsv \
         /your_path/data-english/json-file/coll14_test.json \
