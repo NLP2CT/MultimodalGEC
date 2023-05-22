@@ -45,4 +45,4 @@ Due to the large size of the English Clang8 data and the significant memory requ
 
 ### German GEC Multimodal Data
 
-Since the amount of German data is not substantial, we have released all the data directly, and you can download it from the provided [link](https://drive.google.com/drive/folders/1Cq2arkGpWQ7IQjbOjFC95F-DKTeD--IL?usp=share_link).
+Since the amount of German data is not substantial, we have released all the speech data directly, and you can download it from the provided [link](https://drive.google.com/drive/folders/1Cq2arkGpWQ7IQjbOjFC95F-DKTeD--IL?usp=share_link).
