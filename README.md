@@ -24,6 +24,7 @@ Due to the large size of the English Clang8 data and the significant memory requ
      ```
    # to install the latest stable release (0.10.x)
    pip install fairseq
+   ```
    
 - Step 2:  Download English Train/Dev/Test
 
