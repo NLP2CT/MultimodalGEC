@@ -31,9 +31,11 @@ Due to the large size of the English Clang8 data and the significant memory requ
   You can download the original data that was used to generate the speech data from the [Link](https://drive.google.com/drive/folders/1WwZzhI7VvUV1qJOaaGP0R3UMoFdE7Z2i?usp=share_link).
   
   
-- Step 2:  Generate the speech data from the GEC data
+- Step 3:  Generate the speech data from the GEC data
 
      ```
    # To accommodate the large size of the English Clang8 data, you can split it into multiple smaller files for easier handling.
-   sh 
+   sh generate_english_speech.sh
    ```
+   
+   Please refer to the [`example`]() folder where we have showcased some speech data generated using the CoLL14 test set.
