@@ -50,13 +50,13 @@ done
 
 for i in 2000 4000 6000 8000 0 1 2;do
 
-python "/home/bobzhang/nltk_data/spacy_tok_en.py" \
-    $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_bs-16x16_lr${learning_rate}-conll14.$i.candidate \
-    $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_bs-16x16_lr${learning_rate}-conll14.$i.candidate.sptok
+python "/tool/spacy_en_tok.py" \
+    $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14.$i.candidate \
+    $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14.$i.candidate.sptok
 
-python "/home/bobzhang/nltk_data/retokizier_en.py" \
-    $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_bs-16x16_lr${learning_rate}-conll14.$i.candidate.sptok \
-    | tee $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_bs-16x16_lr${learning_rate}-conll14.$i.candidate.spretok
+python "/tool/retokizier_en.py" \
+    $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14.$i.candidate.sptok \
+    | tee $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14.$i.candidate.spretok
 
 python2 "/home/bobzhang/cl8-speech/cl8-data/m2scorer/scripts/m2scorer.py" -v \
     $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_bs-16x16_lr${learning_rate}-conll14.$i.candidate.spretok  \
