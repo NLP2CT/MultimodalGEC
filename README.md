@@ -1,6 +1,26 @@
 # MultimodalGEC
 The multimodal GEC data creation for the paper titled `Improving Grammatical Error Correction with Multimodal Feature Integration`, which was accepted in the Findings of ACL 2023.
 
+### Citation
+```bibtex
+@inproceedings{fang-etal-2023-improving,
+    title = "Improving Grammatical Error Correction with Multimodal Feature Integration",
+    author = "Fang, Tao  and
+      Hu, Jinpeng  and
+      Wong, Derek F.  and
+      Wan, Xiang  and
+      Chao, Lidia S.  and
+      Chang, Tsung-Hui",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL 2023",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-acl.594",
+    pages = "9328--9344",
+}
+```
+
 ## Introduction
  
 
