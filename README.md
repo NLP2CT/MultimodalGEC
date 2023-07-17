@@ -71,6 +71,6 @@ Since the amount of German data is not substantial, we have released all the spe
 ## Train and Evaluation
 
   ```
-   # To accommodate the large size of the English Clang8 data, you can split it into multiple smaller files for easier handling.
    sh train_and_eval.sh
    ```
+Note: If you are training in German, change the.mv format in the [`dataset.py`](https://github.com/NLP2CT/MultimodalGEC/tree/main/examples) file to read MP3 format
