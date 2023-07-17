@@ -15,7 +15,7 @@ mkdir $output_model
 
 for learning_rate in 0.0001;do
 TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=2 CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.run --nproc_per_node=2 --master_addr=localhost --master_port=54333 \
-        $SPEECH/multimodal_GEC/gec_speech_v3_2tests_base/main.py \
+        gec_speech_moe_mse/main.py \
         --log_file $SPEECH/out/single_gpu_num_train_epochs_${num_train_epochs}_learning_rate_${learning_rate} \
         --learning_rate ${learning_rate} \
         --num_train_epochs ${num_train_epochs} \
