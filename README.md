@@ -46,3 +46,11 @@ Due to the large size of the English Clang8 data and the significant memory requ
 ### German GEC Multimodal Data
 
 Since the amount of German data is not substantial, we have released all the speech data directly, and you can download it from the provided [link](https://drive.google.com/drive/folders/1Cq2arkGpWQ7IQjbOjFC95F-DKTeD--IL?usp=share_link).
+
+
+## Train and Evaluation
+
+  ```
+   # To accommodate the large size of the English Clang8 data, you can split it into multiple smaller files for easier handling.
+   sh train_and_eval.sh
+   ```
