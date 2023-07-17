@@ -58,10 +58,10 @@ python "/tool/retokizier_en.py" \
     $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14.$i.candidate.sptok \
     | tee $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14.$i.candidate.spretok
 
-python2 "/home/bobzhang/cl8-speech/cl8-data/m2scorer/scripts/m2scorer.py" -v \
-    $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_bs-16x16_lr${learning_rate}-conll14.$i.candidate.spretok  \
-    "/home/bobzhang/GEC-transf/trans-data/official-2014.combined.m2" \
-    | tee $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_bs-16x16_lr${learning_rate}-conll14.$i.candidate.spretok.m2scores
+python2 "/tool/scripts/m2scorer.py" -v \
+    $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14.$i.candidate.spretok  \
+    "/your_path/official-2014.combined.m2" \
+    | tee $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14.$i.candidate.spretok.m2scores
 
 done
 
