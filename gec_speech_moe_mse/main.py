@@ -363,8 +363,9 @@ def get_params():
     parser.add_argument("--vocab_size", default=21128, type=int)
     parser.add_argument("--alpha", default=1, type=int)
     parser.add_argument("--result_path_conll14", default='conll14')
-    parser.add_argument("--result_path_bea19_test", default='bea19')
-    parser.add_argument("--result_path_bea19_dev", default='bea19')
+    parser.add_argument("--result_path_conll13_dev", default='conll13')
+    parser.add_argument("--result_path_bea19_test", default='bea19_test')
+    parser.add_argument("--result_path_bea19_dev", default='bea19_dev')
 
     parser.add_argument("--lr_encoder", default=0.2, type=float)
     parser.add_argument("--lr_decoder", default=0.2, type=float)
