@@ -465,8 +465,8 @@ class BaseTrainer(object):
             self.logger.info(f"  Rouge result = {result}")
 
         if tag == 2:
-            gold_path = self.args.result_path_conll13 + '.%d.gold' % epoch
-            can_path = self.args.result_path_conll13 + '.%d.candidate' % epoch
+            gold_path = self.args.result_path_conll13_dev + '.%d.gold' % epoch
+            can_path = self.args.result_path_conll13_dev + '.%d.candidate' % epoch
             self.gold_out_file = codecs.open(gold_path, 'w', 'utf-8')
             self.can_out_file = codecs.open(can_path, 'w', 'utf-8')
 
