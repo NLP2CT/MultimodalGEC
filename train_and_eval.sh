@@ -30,7 +30,7 @@ TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=2 CUDA_VISIBLE_DEVICES=0,1 python -
         --result_path_conll14 $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14 \
         --result_path_bea19_test $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-bea19_test \
         --result_path_bea19_dev $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-bea19_dev \
-        --result_path_bea19_dev $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll13 \
+        --result_path_conll13_dev $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll13 \
         --max_source_length 128 \
         --val_max_target_length 128 \
         --seed ${seed} \
