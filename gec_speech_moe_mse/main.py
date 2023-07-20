@@ -72,18 +72,18 @@ def get_params():
     )
 
     parser.add_argument(
-        "--test_file_conll14", type=str, default=None, help="A csv or a json file containing the validation data."
+        "--test_file_conll14", type=str, default=None, help="A csv or a json file containing the test data."
     )
 
     parser.add_argument(
-        "--test_file_conll13", type=str, default=None, help="A csv or a json file containing the validation data."
+        "--test_file_conll13_dev", type=str, default=None, help="A csv or a json file containing the validation data."
     )
 
     parser.add_argument(
         "--eval_file_bea19_dev", type=str, default=None, help="A csv or a json file containing the validation data."
     )
     parser.add_argument(
-        "--test_file_bea19", type=str, default=None, help="A csv or a json file containing the validation data."
+        "--test_file_bea19", type=str, default=None, help="A csv or a json file containing the test data."
     )
     parser.add_argument(
         "--ignore_pad_token_for_loss",
@@ -560,7 +560,7 @@ def main():
             logging.info('load conll13 test data ... ')
 
 
-            eval_dataset_conll13 = GECMultiModalDataset(args, path=args.test_file_conll13,
+            eval_dataset_conll13 = GECMultiModalDataset(args, path=args.test_file_conll13_dev,
                                            tokenizer=tokenizer,
                                            fields=fields,
                                            symbols=symbols,
