@@ -192,13 +192,13 @@ class BaseTrainer(object):
 
         return preds, labels
 
-    def train(self, train_dataloader, eval_dataloader_conll14, eval_dataloader_bea19, eval_dataloader_bea19_dev):
+    def train(self, train_dataloader, eval_dataloader_conll14, eval_dataloader_conll13, eval_dataloader_bea19, eval_dataloader_bea19_dev):
 
-        self.train_autoregressive(train_dataloader, eval_dataloader_conll14, eval_dataloader_bea19, eval_dataloader_bea19_dev)
+        self.train_autoregressive(train_dataloader, eval_dataloader_conll14, eval_dataloader_conll13, eval_dataloader_bea19, eval_dataloader_bea19_dev)
 
 
 
-    def train_autoregressive(self, train_dataloader, eval_dataloader_conll14, eval_dataloader_bea19, eval_dataloader_bea19_dev):
+    def train_autoregressive(self, train_dataloader, eval_dataloader_conll14, eval_dataloader_conll13, eval_dataloader_bea19, eval_dataloader_bea19_dev):
 
 
 
@@ -314,13 +314,16 @@ class BaseTrainer(object):
                             
                     if completed_steps % self.eval_steps == 0 and completed_steps != 0:
                         self.test_autoregressive(eval_dataloader_conll14, 1, completed_steps)
-                        self.test_autoregressive(eval_dataloader_bea19, 2, completed_steps)
+                        self.test_autoregressive(eval_dataloader_conll13, 2, completed_steps)
+                        self.test_autoregressive(eval_dataloader_bea19, 3, completed_steps)
+                        self.test_autoregressive(eval_dataloader_bea19_dev, 4, epoch)
 
 
             if (epoch + 1) % self.eval_epoch == 0:
                 self.test_autoregressive(eval_dataloader_conll14, 1, epoch)
-                self.test_autoregressive(eval_dataloader_bea19, 2, epoch)
-                self.test_autoregressive(eval_dataloader_bea19_dev, 3, epoch)
+                self.test_autoregressive(eval_dataloader_conll13, 2, epoch)
+                self.test_autoregressive(eval_dataloader_bea19, 3, epoch)
+                self.test_autoregressive(eval_dataloader_bea19_dev, 4, epoch)
                 # # save model
                 # self.save_model(epoch)
 
@@ -462,6 +465,46 @@ class BaseTrainer(object):
             self.logger.info(f"  Rouge result = {result}")
 
         if tag == 2:
+            gold_path = self.args.result_path_conll13 + '.%d.gold' % epoch
+            can_path = self.args.result_path_conll13 + '.%d.candidate' % epoch
+            self.gold_out_file = codecs.open(gold_path, 'w', 'utf-8')
+            self.can_out_file = codecs.open(can_path, 'w', 'utf-8')
+
+            process_predictions = []
+            process_references = []
+
+
+            for i in range(len(predictions)):
+                pred, gold = predictions[i], references[i]
+
+                if pred == '':
+                    pred = 'Nothing Generated'
+
+                process_predictions.append(pred)
+                process_references.append(gold)
+
+                self.can_out_file.write(pred + '\n')
+                self.gold_out_file.write(gold + '\n')
+
+
+            self.can_out_file.flush()
+            self.gold_out_file.flush()
+
+            self.can_out_file.close()
+            self.gold_out_file.close()
+
+            rouge = Rouge()
+            rouge_score = rouge.get_scores(process_predictions, process_references, avg=True)
+            r1 = rouge_score['rouge-1']['f'] * 100
+            r2 = rouge_score['rouge-2']['f'] * 100
+            rl = rouge_score['rouge-l']['f'] * 100
+            result = dict()
+            result['rouge-1'] = r1
+            result['rouge-2'] = r2
+            result['rouge-l'] = rl
+            self.logger.info(f"  Rouge result = {result}")
+
+        if tag == 3:
             gold_path = self.args.result_path_bea19_test + '.%d.gold' % epoch
             can_path = self.args.result_path_bea19_test + '.%d.candidate' % epoch
             self.gold_out_file = codecs.open(gold_path, 'w', 'utf-8')
@@ -491,7 +534,7 @@ class BaseTrainer(object):
             self.gold_out_file.close()
 
         
-        if tag == 3:
+        if tag == 4:
             gold_path = self.args.result_path_bea19_dev + '.%d.gold' % epoch
             can_path = self.args.result_path_bea19_dev + '.%d.candidate' % epoch
             self.gold_out_file = codecs.open(gold_path, 'w', 'utf-8')
