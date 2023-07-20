@@ -37,13 +37,13 @@ def set_seed(seed):
     torch.backends.cudnn.benchmark = False
 
 
-tokenizer_path = "/home/derekfw/yc074909/T5-code/model_room/pretrain_bart_checkpoint/"
+tokenizer_path = "/path/model_room/pretrain_bart_checkpoint/"
 
 
 def get_params():
     # parse parameters
     parser = argparse.ArgumentParser(description="Cross-domain NER")
-    parser.add_argument("--model_name_or_path", type=str, default='/home/derekfw/yc074909/tao/model/bart-', )
+    parser.add_argument("--model_name_or_path", type=str, default='/path/model/bart-', )
 
     parser.add_argument("--dump_path", type=str, default="experiments5", help="Experiment saved root path")
     parser.add_argument("--exp_id", type=str, default="1", help="Experiment id")
@@ -73,6 +73,10 @@ def get_params():
 
     parser.add_argument(
         "--test_file_conll14", type=str, default=None, help="A csv or a json file containing the validation data."
+    )
+
+    parser.add_argument(
+        "--test_file_conll13", type=str, default=None, help="A csv or a json file containing the validation data."
     )
 
     parser.add_argument(
@@ -341,7 +345,7 @@ def get_params():
     parser.add_argument("--speech_joint_model", default='', type=str)
 
     parser.add_argument("--image_dir", type=str, default='/mntnfs/diis_data3/chenqian/workspace/R2Gen-main/data/mimic_cxr')
-    parser.add_argument("--speech_dir", type=str, default='/Users/hjp/phd/multimodal_data/speech')
+    parser.add_argument("--speech_dir", type=str, default='/Users/path/multimodal_data/speech')
 
 
     ##bertabs
@@ -520,7 +524,7 @@ def main():
             logging.info('finish loading eval data ... ')
             logging.info('load bea-19 eval data ... ')
 
-            eval_dataset_conll14 = GECMultiModalDataset(args, path=args.test_file_bea19,
+            eval_dataset_bea19 = GECMultiModalDataset(args, path=args.test_file_bea19,
                                            tokenizer=tokenizer,
                                            fields=fields,
                                            symbols=symbols,
@@ -551,6 +555,18 @@ def main():
                                            is_train=True)
                                            
             logging.info('finish loading coll14 test data ... ')
+
+            logging.info('## conll13 ######################### ... ')
+            logging.info('load conll13 test data ... ')
+
+
+            eval_dataset_conll13 = GECMultiModalDataset(args, path=args.test_file_conll13,
+                                           tokenizer=tokenizer,
+                                           fields=fields,
+                                           symbols=symbols,
+                                           is_train=True)
+                                           
+            logging.info('finish loading coll13 test data ... ')
 
             logging.info('## bea19 test ######################### ... ')
             logging.info('load bea19 test data ... ')
@@ -596,6 +612,12 @@ def main():
                                    shuffle=False,
                                    dataset=eval_dataset_conll14)
 
+    eval_dataloader_conll13 = MyDataLoader(args,
+                                   tokenizer=tokenizer,
+                                   feature_extractor=feature_extractor,
+                                   shuffle=False,
+                                   dataset=eval_dataset_conll13)
+
     eval_dataloader_bea19 = MyDataLoader(args,
                                    tokenizer=tokenizer,
                                    feature_extractor=feature_extractor,
@@ -610,7 +632,7 @@ def main():
 
 
     # Trainer.train(train_dataloader, eval_dataloader, eval_dataloader)
-    Trainer.train(train_dataloader, eval_dataloader_conll14, eval_dataloader_bea19, eval_dataloader_bea19_dev)     
+    Trainer.train(train_dataloader, eval_dataloader_conll14, eval_dataloader_conll13, eval_dataloader_bea19, eval_dataloader_bea19_dev)     
 
 if __name__ == '__main__':
 
