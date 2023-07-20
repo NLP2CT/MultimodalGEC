@@ -2,7 +2,7 @@ ROOT=Your_path
 SPEECH=$ROOT/speech-en 
 SPEECH_DATA=$SPEECH/speech_data  ## speech data path
 
-seed=333
+seed=333 
 time=$(date "+%Y-%m-%d-%H-%M")
 
 model_type=SpeechWithEncoderDecoderModel
@@ -30,6 +30,7 @@ TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=2 CUDA_VISIBLE_DEVICES=0,1 python -
         --result_path_conll14 $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14 \
         --result_path_bea19_test $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-bea19_test \
         --result_path_bea19_dev $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-bea19_dev \
+        --result_path_bea19_dev $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll13 \
         --max_source_length 128 \
         --val_max_target_length 128 \
         --seed ${seed} \
@@ -38,6 +39,7 @@ TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=2 CUDA_VISIBLE_DEVICES=0,1 python -
         --test_file_conll14 "/your_json_data_path/cl8_json_differ_files/coll14_test.json" \
         --test_file_bea19 "/your_json_data_path/cl8_json_differ_files/ABCN_bea19_test.json" \
         --eval_file_bea19_dev "/your_json_data_path/cl8_json_differ_files/ABCN_bea19_dev.json" \
+        --eval_file_conll13_dev "/your_json_data_path/cl8_json_differ_files/coll13_dev.json" \
         --output_dir $output_model \
         --eval_epoch 1 \
         --eval_steps 2000 \
@@ -48,7 +50,11 @@ TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=2 CUDA_VISIBLE_DEVICES=0,1 python -
         --preprocessing_num_workers 16
 done
 
-for i in 2000 4000 6000 8000 0 1 2;do
+
+
+### Evaluation on the best model
+
+for i in best; do
 
 python "/tool/spacy_en_tok.py" \
     $SPEECH/model-result/result/dot-attention_bs-16x32_lr-0.0001-2a100-moe-mse/seed${seed}_lr${learning_rate}-conll14.$i.candidate \
