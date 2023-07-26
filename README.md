@@ -69,8 +69,12 @@ Since the amount of German data is not substantial, we have released all the spe
 
 
 ## Train and Evaluation
-
+English
   ```
-   sh train_and_eval.sh
+   sh train_and_eval_English.sh
    ```
-Note: If you are training in German, change the.mv format in the [`dataset.py`](https://github.com/NLP2CT/MultimodalGEC/blob/main/gec_speech_moe_mse/model/dataset.py) file to read MP3 format
+
+German
+  ```
+   sh train_and_eval_German.sh
+   ```
