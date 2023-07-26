@@ -1,0 +1,19 @@
+appdirs @ file:///home/conda/feedstock_root/build_artifacts/appdirs_1603108395799/work
+audioread @ file:///home/conda/feedstock_root/build_artifacts/audioread_1667037077875/work
+de-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-3.4.0/de_core_news_sm-3.4.0-py3-none-any.whl
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.4.1/en_core_web_sm-3.4.1-py3-none-any.whl
+librosa @ file:///home/conda/feedstock_root/build_artifacts/librosa_1656336149289/work
+datasets==2.7.1
+g2p-en==2.1.0
+huggingface-hub==0.11.1
+tokenizers==0.13.2
+transformers==4.25.1
+torch==1.13.0
+torchaudio==0.13.0
+torchvision==0.14.0
+spacy==3.4.4
+spacy-legacy==3.0.10
+spacy-loggers==1.0.4
+rouge==1.0.1
+rouge-score==0.1.2
+soundfile @ file:///home/conda/feedstock_root/build_artifacts/pysoundfile_1665058838115/work
