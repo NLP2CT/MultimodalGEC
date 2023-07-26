@@ -316,7 +316,7 @@ class BaseTrainer(object):
                         self.test_autoregressive(eval_dataloader_conll14, 1, completed_steps)
                         self.test_autoregressive(eval_dataloader_conll13, 2, completed_steps)
                         self.test_autoregressive(eval_dataloader_bea19, 3, completed_steps)
-                        self.test_autoregressive(eval_dataloader_bea19_dev, 4, epoch)
+                        self.test_autoregressive(eval_dataloader_bea19_dev, 4, completed_steps)
 
 
             if (epoch + 1) % self.eval_epoch == 0:
