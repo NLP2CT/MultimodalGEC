@@ -366,7 +366,7 @@ class BaseTrainer(object):
 
                 progress_bar_test.update(1)
 
-        if tag == 2:
+        if tag == 1:
             gold_path = self.args.result_path_de_test + '.%d.gold' % epoch
             can_path = self.args.result_path_de_test + '.%d.candidate' % epoch
             self.gold_out_file = codecs.open(gold_path, 'w', 'utf-8')
@@ -415,7 +415,7 @@ class BaseTrainer(object):
             result['rouge-l'] = rl
             self.logger.info(f"  Rouge result = {result}")
 
-        if tag == 1:
+        if tag == 2:
             gold_path = self.args.result_path_de_dev + '.%d.gold' % epoch
             can_path = self.args.result_path_de_dev + '.%d.candidate' % epoch
             self.gold_out_file = codecs.open(gold_path, 'w', 'utf-8')
